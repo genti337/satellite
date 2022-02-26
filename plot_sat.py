@@ -17,7 +17,9 @@ else:
 	log_files = os.listdir(os.getcwd() + '/Log_data')
 
 # Create Figure for 3D Plot
-if not args.plot_peri:
+if args.plot_peri:
+	ax = plt.axes()
+else:
 	ax = plt.axes(projection='3d')
 
 # Read in the data from all of the log files
@@ -27,9 +29,16 @@ for log_file in log_files:
 
 	# Plot the Satellite Motion in the Perifocal Frame
 	if args.plot_peri:
-		plt.plot(df['periPosP'], df['periPosQ'])
+		ax.plot(df['periPosP'], df['periPosQ'])
+		ax.set_xlabel('P (m)')
+		ax.set_ylabel('Q (m)')
+		ax.set_title('Position w.r.t. Perifocal Frame')
 	# Plot the Satellite Motion in the Inertial Frame
 	else:
 		ax.plot3D(df['eciPosX'], df['eciPosY'], df['eciPosZ'])
+		ax.set_xlabel('X (m)')
+		ax.set_ylabel('Y (m)')
+		ax.set_zlabel('Z (m)')
+		ax.set_title('Position w.r.t. Inertial Frame')
                                                        
 plt.show()
