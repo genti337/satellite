@@ -12,6 +12,10 @@ in a comma separated file which is then processed by the plotting tool.  I chose
 inertial position because depending on the orbit inclination it may be difficult to visualization in the X-Y or Y-Z planes.  The option 
 to view the motion in the perifocal frame was also added because it is easy to visualize the orbit in the orbital plane.
 
+A couple things to note is that this model assumes the only force acting on the spacecraft is the gravitational force and the J2 effect due to 
+the Earth's oblateness was not taken into account so this is an ideal orbit.  The integration method is also very simple and should be updated in the 
+future to support more accurate results.  This is also a 3 degree of freedom model since the rotational motion is not simulated at this point.
+
 # Installation
 This repository uses PDM to manage the required python packages to run the scripts.  The pyproject.toml file has been added to the 
 repository to track the needed packages and versions.  To install the required packages the following command can be run.
